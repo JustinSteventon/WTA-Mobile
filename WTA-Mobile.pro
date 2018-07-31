@@ -1,6 +1,8 @@
 # allows to add DEPLOYMENTFOLDERS and links to the V-Play library and QtCreator auto-completion
 CONFIG += v-play
 
+QT += xml
+
 # add QZXing framework for barcode scanning
 CONFIG += qzxing_multimedia
 include(QZXing/QZXing.pri)
@@ -37,7 +39,10 @@ RESOURCES += #    resources.qrc # uncomment for publishing
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += \
-    main.cpp
+    main.cpp \
+    cpp/session.cpp \
+    cpp/html2xml.cpp \
+    cpp/wtanetworkcontext.cpp
 
 android {
     ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
@@ -62,3 +67,8 @@ win32 {
 macx {
     ICON = macx/app_icon.icns
 }
+
+HEADERS += \
+    cpp/session.h \
+    cpp/html2xml.h \
+    cpp/wtanetworkcontext.h

@@ -1,8 +1,7 @@
 #include <QApplication>
 #include <VPApplication>
-
 #include <QQmlApplicationEngine>
-
+#include <cpp/session.h>
 
 int main(int argc, char *argv[])
 {
@@ -14,6 +13,12 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
     vplay.initialize(&engine);
+
+    // Publish the Session as a singleton.
+    if (!Session::RegisterSingleton(&engine))
+    {
+        return -1;
+    }
 
     // use this during development
     // for PUBLISHING, use the entry point below
